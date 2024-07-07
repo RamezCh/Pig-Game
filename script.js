@@ -1,14 +1,6 @@
 'use strict';
 
 // Select Elements
-// Player 0
-const player0 = document.querySelector('.player--0');
-const score0 = document.getElementById('score--0');
-const currentScore0 = document.getElementById('current--0');
-// Player 1
-const player1 = document.querySelector('.player--1');
-const score1 = document.getElementById('score--1');
-const currentScore1 = document.getElementById('current--1');
 // Dice
 const dice = document.querySelector('.dice');
 // Buttons
@@ -49,3 +41,24 @@ const switchPlayer = function () {
   player0.classList.toggle('player--active');
   player1.classList.toggle('player--active');
 };
+
+// Holding Score Functionality
+btnHold.addEventListener('click', function () {
+  if (playing) {
+    scores[activePlayer] += currentScore;
+    document.getElementById(`score--${activePlayer}`).textContent =
+      scores[activePlayer];
+    if (scores[activePlayer] >= 100) {
+      playing = false;
+      dice.classList.add('hidden');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add('player--winner');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove('player--active');
+    } else {
+      switchPlayer();
+    }
+  }
+});
