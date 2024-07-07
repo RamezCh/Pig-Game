@@ -62,3 +62,20 @@ btnHold.addEventListener('click', function () {
     }
   }
 });
+
+// Resetting Game Functionality
+btnNew.addEventListener('click', function () {
+  playing = true;
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  score0.textContent = 0;
+  score1.textContent = 0;
+  current0.textContent = 0;
+  current1.textContent = 0;
+  dice.classList.add('hidden');
+  player0.classList.remove('player--winner');
+  player1.classList.remove('player--winner');
+  player0.classList.add('player--active');
+  player1.classList.remove('player--active');
+});
