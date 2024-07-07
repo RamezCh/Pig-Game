@@ -40,3 +40,12 @@ btnRoll.addEventListener('click', function () {
     switchPlayer();
   }
 });
+
+// Switch Player Functionality
+const switchPlayer = function () {
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+  currentScore = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  player0.classList.toggle('player--active');
+  player1.classList.toggle('player--active');
+};
