@@ -26,3 +26,17 @@ let currentScore = 0;
 let activePlayer = 0;
 let scores = [0, 0];
 let playing = true;
+
+// Rolling Dice Functionality
+btnRoll.addEventListener('click', function () {
+  const diceValue = Math.trunc(Math.random() * 6) + 1;
+  dice.src = `images/dice-${diceValue}.png`;
+  dice.classList.remove('hidden');
+  if (diceValue !== 1) {
+    currentScore += diceValue;
+    document.getElementById(`current--${activePlayer}`).textContent =
+      currentScore;
+  } else {
+    switchPlayer();
+  }
+});
